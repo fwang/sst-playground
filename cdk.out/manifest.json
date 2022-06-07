@@ -1,0 +1,222 @@
+{
+  "version": "18.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "dev-playground-FunctionLayerStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "dev-playground-FunctionLayerStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "dev-playground-FunctionLayerStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://112245769880/us-east-1",
+      "properties": {
+        "templateFile": "dev-playground-FunctionLayerStack.template.json",
+        "tags": {
+          "sst:app": "playground",
+          "sst:stage": "dev"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::112245769880:role/cdk-hnb659fds-deploy-role-112245769880-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::112245769880:role/cdk-hnb659fds-cfn-exec-role-112245769880-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-112245769880-us-east-1/2994b75b2ef582f9a58c77c5ee6cb2d86f6eefb044e1d735fcc675565d66447e.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "dev-playground-FunctionLayerStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::112245769880:role/cdk-hnb659fds-lookup-role-112245769880-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "dev-playground-FunctionLayerStack.assets"
+      ],
+      "metadata": {
+        "/dev-playground-FunctionLayerStack": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "sst:app",
+                "Value": "playground"
+              },
+              {
+                "Key": "sst:stage",
+                "Value": "dev"
+              }
+            ]
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/SSTMetadata": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SSTMetadata"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/InternalLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InternalLayer7896005A"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/Fn/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnServiceRoleB9001A96"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/Fn/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnServiceRoleDefaultPolicyC6A839BF"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/Fn/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Fn9270CBC0"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InternalLayerArnc8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b1CF9D33C"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/dev-playground-FunctionLayerStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "dev-playground-FunctionLayerStack"
+    },
+    "dev-playground-FunctionLayerShareStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "dev-playground-FunctionLayerShareStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "dev-playground-FunctionLayerShareStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://112245769880/us-east-1",
+      "properties": {
+        "templateFile": "dev-playground-FunctionLayerShareStack.template.json",
+        "tags": {
+          "sst:app": "playground",
+          "sst:stage": "dev"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::112245769880:role/cdk-hnb659fds-deploy-role-112245769880-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::112245769880:role/cdk-hnb659fds-cfn-exec-role-112245769880-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-112245769880-us-east-1/9342cda0e9df7b1f6909db4117069a61c4d72b2c36fab5166eb2631a9295038b.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "dev-playground-FunctionLayerShareStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::112245769880:role/cdk-hnb659fds-lookup-role-112245769880-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "dev-playground-FunctionLayerStack",
+        "dev-playground-FunctionLayerShareStack.assets"
+      ],
+      "metadata": {
+        "/dev-playground-FunctionLayerShareStack": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "sst:app",
+                "Value": "playground"
+              },
+              {
+                "Key": "sst:stage",
+                "Value": "dev"
+              }
+            ]
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/SSTMetadata": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SSTMetadata"
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/SsmParameterValue:--layers--dev-playground-FunctionLayerStack--InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValuelayersdevplaygroundFunctionLayerStackInternalLayerArnc8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932bC96584B6F00A464EAD1953AFF4B05118Parameter"
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/Fn/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnServiceRoleB9001A96"
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/Fn/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnServiceRoleDefaultPolicyC6A839BF"
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/Fn/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Fn9270CBC0"
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/dev-playground-FunctionLayerShareStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "dev-playground-FunctionLayerShareStack"
+    }
+  }
+}

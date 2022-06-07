@@ -1,0 +1,209 @@
+{
+ "Resources": {
+  "SSTMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "dev-playground-FunctionLayerShareStack/SSTMetadata",
+    "sst:version": "1.2.15",
+    "sst:constructs": [
+     {
+      "id": "Fn",
+      "addr": "c828c3607d45437f68d28eca2fb9f32c618083a233",
+      "stack": "dev-playground-FunctionLayerShareStack",
+      "type": "Function",
+      "data": {
+       "localId": "dev-playground-FunctionLayerShareStack-Fn",
+       "arn": {
+        "Fn::GetAtt": [
+         "Fn9270CBC0",
+         "Arn"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "FnServiceRoleB9001A96": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "sst:app",
+      "Value": "playground"
+     },
+     {
+      "Key": "sst:stage",
+      "Value": "dev"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "dev-playground-FunctionLayerShareStack/Fn/ServiceRole/Resource"
+   }
+  },
+  "FnServiceRoleDefaultPolicyC6A839BF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "xray:PutTraceSegments",
+        "xray:PutTelemetryRecords"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "FnServiceRoleDefaultPolicyC6A839BF",
+    "Roles": [
+     {
+      "Ref": "FnServiceRoleB9001A96"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "dev-playground-FunctionLayerShareStack/Fn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "Fn9270CBC0": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-112245769880-us-east-1",
+     "S3Key": "770d1f6d6e02f1e2507b2e7e1ab6d9399e50e8a4b4e969c90ec03dfa1d178fa5.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "FnServiceRoleB9001A96",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "EphemeralStorage": {
+     "Size": 512
+    },
+    "Handler": "src/lambda.root",
+    "Layers": [
+     {
+      "Ref": "SsmParameterValuelayersdevplaygroundFunctionLayerStackInternalLayerArnc8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932bC96584B6F00A464EAD1953AFF4B05118Parameter"
+     }
+    ],
+    "MemorySize": 1024,
+    "Runtime": "nodejs16.x",
+    "Tags": [
+     {
+      "Key": "sst:app",
+      "Value": "playground"
+     },
+     {
+      "Key": "sst:stage",
+      "Value": "dev"
+     }
+    ],
+    "Timeout": 10,
+    "TracingConfig": {
+     "Mode": "Active"
+    }
+   },
+   "DependsOn": [
+    "FnServiceRoleDefaultPolicyC6A839BF",
+    "FnServiceRoleB9001A96"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "dev-playground-FunctionLayerShareStack/Fn/Resource",
+    "aws:asset:path": "asset.770d1f6d6e02f1e2507b2e7e1ab6d9399e50e8a4b4e969c90ec03dfa1d178fa5",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/z2OzQ6CQAyEn8X7UhV/7mLimeADkLJUUtifhC4as+HdhTV6mq+T6WRyyI+w2+BLMt0OmeEG4j2gHtT14SoSP42aVi5xREuBRvV3l6c6GrRNixBvk9OBvVuzP54Vo4VYeZMqkpbesH6nxkSzkkONIhQELqssNxSTHigUKDSrZC6TOnbdrJxvCXrZPvdn2J+W5b0wZ+PkAluC6qsfGcjgd9UAAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "dev-playground-FunctionLayerShareStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "SsmParameterValuelayersdevplaygroundFunctionLayerStackInternalLayerArnc8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932bC96584B6F00A464EAD1953AFF4B05118Parameter": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/layers/dev-playground-FunctionLayerStack/InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b"
+  },
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

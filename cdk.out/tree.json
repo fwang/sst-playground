@@ -1,0 +1,582 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.57"
+        }
+      },
+      "dev-playground-FunctionLayerStack": {
+        "id": "dev-playground-FunctionLayerStack",
+        "path": "dev-playground-FunctionLayerStack",
+        "children": {
+          "SSTMetadata": {
+            "id": "SSTMetadata",
+            "path": "dev-playground-FunctionLayerStack/SSTMetadata",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnResource",
+              "version": "2.24.0"
+            }
+          },
+          "InternalLayer": {
+            "id": "InternalLayer",
+            "path": "dev-playground-FunctionLayerStack/InternalLayer",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "dev-playground-FunctionLayerStack/InternalLayer/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "dev-playground-FunctionLayerStack/InternalLayer/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.24.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "dev-playground-FunctionLayerStack/InternalLayer/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.24.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.24.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "dev-playground-FunctionLayerStack/InternalLayer/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                  "aws:cdk:cloudformation:props": {
+                    "content": {
+                      "s3Bucket": "cdk-hnb659fds-assets-112245769880-us-east-1",
+                      "s3Key": "370d89503faa72c8c3b5aa73e4b4d0ca272df0f4e866b40d661d22c66c5994fe.zip"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                  "version": "2.24.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.LayerVersion",
+              "version": "2.24.0"
+            }
+          },
+          "Fn": {
+            "id": "Fn",
+            "path": "dev-playground-FunctionLayerStack/Fn",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "dev-playground-FunctionLayerStack/Fn/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "dev-playground-FunctionLayerStack/Fn/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ],
+                        "tags": [
+                          {
+                            "key": "sst:app",
+                            "value": "playground"
+                          },
+                          {
+                            "key": "sst:stage",
+                            "value": "dev"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.24.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "dev-playground-FunctionLayerStack/Fn/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "dev-playground-FunctionLayerStack/Fn/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "xray:PutTraceSegments",
+                                    "xray:PutTelemetryRecords"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "FnServiceRoleDefaultPolicyC6A839BF",
+                            "roles": [
+                              {
+                                "Ref": "FnServiceRoleB9001A96"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.24.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.24.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.24.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "dev-playground-FunctionLayerStack/Fn/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "dev-playground-FunctionLayerStack/Fn/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.24.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "dev-playground-FunctionLayerStack/Fn/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.24.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.24.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "dev-playground-FunctionLayerStack/Fn/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-112245769880-us-east-1",
+                      "s3Key": "770d1f6d6e02f1e2507b2e7e1ab6d9399e50e8a4b4e969c90ec03dfa1d178fa5.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "FnServiceRoleB9001A96",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "ephemeralStorage": {
+                      "size": 512
+                    },
+                    "handler": "src/lambda.root",
+                    "layers": [
+                      {
+                        "Ref": "InternalLayer7896005A"
+                      }
+                    ],
+                    "memorySize": 1024,
+                    "runtime": "nodejs16.x",
+                    "tags": [
+                      {
+                        "key": "sst:app",
+                        "value": "playground"
+                      },
+                      {
+                        "key": "sst:stage",
+                        "value": "dev"
+                      }
+                    ],
+                    "timeout": 10,
+                    "tracingConfig": {
+                      "mode": "Active"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.24.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.24.0"
+            }
+          },
+          "InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b": {
+            "id": "InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b",
+            "path": "dev-playground-FunctionLayerStack/InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "dev-playground-FunctionLayerStack/InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SSM::Parameter",
+                  "aws:cdk:cloudformation:props": {
+                    "type": "String",
+                    "value": {
+                      "Ref": "InternalLayer7896005A"
+                    },
+                    "name": "/layers/dev-playground-FunctionLayerStack/InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b",
+                    "tags": {
+                      "sst:app": "playground",
+                      "sst:stage": "dev"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ssm.CfnParameter",
+                  "version": "2.24.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ssm.StringParameter",
+              "version": "2.24.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "dev-playground-FunctionLayerStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "dev-playground-FunctionLayerStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.24.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.57"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.24.0"
+        }
+      },
+      "dev-playground-FunctionLayerShareStack": {
+        "id": "dev-playground-FunctionLayerShareStack",
+        "path": "dev-playground-FunctionLayerShareStack",
+        "children": {
+          "SSTMetadata": {
+            "id": "SSTMetadata",
+            "path": "dev-playground-FunctionLayerShareStack/SSTMetadata",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnResource",
+              "version": "2.24.0"
+            }
+          },
+          "SsmParameterValue:--layers--dev-playground-FunctionLayerStack--InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
+            "id": "SsmParameterValue:--layers--dev-playground-FunctionLayerStack--InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "path": "dev-playground-FunctionLayerShareStack/SsmParameterValue:--layers--dev-playground-FunctionLayerStack--InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.24.0"
+            }
+          },
+          "SsmParameterValue:--layers--dev-playground-FunctionLayerStack--InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b:C96584B6-F00A-464E-AD19-53AFF4B05118": {
+            "id": "SsmParameterValue:--layers--dev-playground-FunctionLayerStack--InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "path": "dev-playground-FunctionLayerShareStack/SsmParameterValue:--layers--dev-playground-FunctionLayerStack--InternalLayerArn-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.24.0"
+            }
+          },
+          "IInternalLayer-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b": {
+            "id": "IInternalLayer-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b",
+            "path": "dev-playground-FunctionLayerShareStack/IInternalLayer-c8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932b",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.24.0"
+            }
+          },
+          "Fn": {
+            "id": "Fn",
+            "path": "dev-playground-FunctionLayerShareStack/Fn",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "dev-playground-FunctionLayerShareStack/Fn/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "dev-playground-FunctionLayerShareStack/Fn/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ],
+                        "tags": [
+                          {
+                            "key": "sst:app",
+                            "value": "playground"
+                          },
+                          {
+                            "key": "sst:stage",
+                            "value": "dev"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.24.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "dev-playground-FunctionLayerShareStack/Fn/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "dev-playground-FunctionLayerShareStack/Fn/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "xray:PutTraceSegments",
+                                    "xray:PutTelemetryRecords"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "FnServiceRoleDefaultPolicyC6A839BF",
+                            "roles": [
+                              {
+                                "Ref": "FnServiceRoleB9001A96"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.24.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.24.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.24.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "dev-playground-FunctionLayerShareStack/Fn/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "dev-playground-FunctionLayerShareStack/Fn/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.24.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "dev-playground-FunctionLayerShareStack/Fn/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.24.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.24.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "dev-playground-FunctionLayerShareStack/Fn/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-112245769880-us-east-1",
+                      "s3Key": "770d1f6d6e02f1e2507b2e7e1ab6d9399e50e8a4b4e969c90ec03dfa1d178fa5.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "FnServiceRoleB9001A96",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "ephemeralStorage": {
+                      "size": 512
+                    },
+                    "handler": "src/lambda.root",
+                    "layers": [
+                      {
+                        "Ref": "SsmParameterValuelayersdevplaygroundFunctionLayerStackInternalLayerArnc8a7f2fb3e383eaa76ff2cd3ce14ab51d9aa53932bC96584B6F00A464EAD1953AFF4B05118Parameter"
+                      }
+                    ],
+                    "memorySize": 1024,
+                    "runtime": "nodejs16.x",
+                    "tags": [
+                      {
+                        "key": "sst:app",
+                        "value": "playground"
+                      },
+                      {
+                        "key": "sst:stage",
+                        "value": "dev"
+                      }
+                    ],
+                    "timeout": 10,
+                    "tracingConfig": {
+                      "mode": "Active"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.24.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.24.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "dev-playground-FunctionLayerShareStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "dev-playground-FunctionLayerShareStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.24.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.57"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.24.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.24.0"
+    }
+  }
+}
