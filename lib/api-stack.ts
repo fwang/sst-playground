@@ -1,4 +1,4 @@
-import * as apig from "@aws-cdk/aws-apigatewayv2-alpha";
+//import * as apig from "@aws-cdk/aws-apigatewayv2-alpha";
 import * as sst from "@serverless-stack/resources";
 
 export default function ApiStack({ stack }: sst.StackContext) {
@@ -22,6 +22,7 @@ export default function ApiStack({ stack }: sst.StackContext) {
     CustomEndpoint: api.customDomainUrl || "no-custom-url",
   });
 
+  /*
   // Create Api without custom domain
   new sst.Api(stack, "NoDomain", {
     routes: {
@@ -45,6 +46,7 @@ export default function ApiStack({ stack }: sst.StackContext) {
     stageName: "my-stage",
     autoDeploy: true,
   });
+  */
 
   return { api };
 }

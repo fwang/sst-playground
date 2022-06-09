@@ -1,9 +1,9 @@
 import * as cdk from "aws-cdk-lib";
-//import ApiStack from "./api-stack";
+import ApiStack from "./api-stack";
 //import AuthStack from "./auth-stack";
 //import { MainStack as ApiExtraRoutesStack } from "./api-extra-routes-stack";
-import EventBusStack from "./eventbus-stack";
-//import { MainStack as ApolloStack } from "./apollo-api-stack";
+//import EventBusStack from "./eventbus-stack";
+//import ApolloStack from "./apollo-api-stack";
 //import { MainStack as CronStack } from "./cron-stack";
 //import BucketStack from "./bucket-stack";
 //import BucketCDNStack from "./bucket-cdn-stack";
@@ -44,11 +44,11 @@ export default async function main(app: sst.App) {
   app.setDefaultRemovalPolicy("destroy");
 
   app
-  //.stack(ApiStack, { id: "api" })
+  .stack(ApiStack, { id: "api" })
   //.stack(AuthStack)
   //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" })
   //.stack(ApiV1Stack, { id: "apiv1" });
-  //new ApolloStack(app, "apollo");
+  //.stack(ApolloStack, { id: "apollo" });
   //new AppsyncStack(app, "appsync");
   //new WebsocketStack(app, "websocket");
 
@@ -59,7 +59,7 @@ export default async function main(app: sst.App) {
   //.stack(BucketStack, { id: "bucket" })
   //.stack(BucketCDNStack, { id: "bucket-cdn" })
   //new TopicStack(app, "topic");
-  .stack(EventBusStack, { id: "event-bus" })
+  //.stack(EventBusStack, { id: "event-bus" })
   //new KinesisStack(app, "stream");
   //.stack(ReactSiteStack, { id: "site" })
   //new NextjsStack(app, "nextjs", { api: apiStack.api });

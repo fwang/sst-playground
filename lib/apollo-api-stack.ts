@@ -1,16 +1,12 @@
 import * as sst from "@serverless-stack/resources";
 
-export class MainStack extends sst.Stack {
-  constructor(scope: sst.App, id: string, props?: sst.StackProps) {
-    super(scope, id, props);
+export default function ApolloStack({ stack }: sst.StackContext) {
+  const api = new sst.GraphQLApi(stack, "Api", {
+    server: "src/apollo/graphql.handler",
+  });
 
-    const api = new sst.GraphQLApi(this, "Api", {
-      server: "src/apollo/graphql.handler",
-    });
-
-    this.addOutputs({
-      Endpoint: api.url || "no-url",
-      CustomEndpoint: api.customDomainUrl || "no-custom-url",
-    });
-  }
+  stack.addOutputs({
+    Endpoint: api.url || "no-url",
+    CustomEndpoint: api.customDomainUrl || "no-custom-url",
+  });
 }
