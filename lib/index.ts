@@ -13,7 +13,7 @@ import ApiStack from "./api-stack";
 //import { MainStack as KinesisStack } from "./kinesis-stream";
 //import { MainStack as ApiV1Stack } from "./apiv1-stack";
 //import ReactSiteStack from "./react-static-site-stack";
-//import { MainStack as NextjsStack } from "./nextjs-site-stack";
+//import NextjsStack from "./nextjs-site-stack";
 //import { MainStack as ScriptStack } from "./script-stack";
 //import FunctionLayerStack from "./function-layer-stack";
 //import FunctionLayerShareStack from "./function-layer-share-stack";
@@ -35,6 +35,8 @@ import ApiStack from "./api-stack";
 //import { MainStack as LambdaErrorCasesStack } from "./lambda-error-cases-stack";
 //import { MainStack as CircularDependencyStack } from "./circular-dependency-stack";
 
+import ClassicStack from "./classic-stack";
+
 import * as sst from "@serverless-stack/resources";
 
 export default async function main(app: sst.App) {
@@ -42,6 +44,8 @@ export default async function main(app: sst.App) {
     runtime: "nodejs16.x",
   });
   app.setDefaultRemovalPolicy("destroy");
+
+  new ClassicStack(app, "classic");
 
   app
   .stack(ApiStack, { id: "api" })
@@ -62,7 +66,7 @@ export default async function main(app: sst.App) {
   //.stack(EventBusStack, { id: "event-bus" })
   //new KinesisStack(app, "stream");
   //.stack(ReactSiteStack, { id: "site" })
-  //new NextjsStack(app, "nextjs", { api: apiStack.api });
+  //.stack(NextjsStack, { id: "nextjs" })
   //new ScriptStack(app, "script", { api: apiStack.api });
   //.stack(FunctionLayerStack)
   //.stack(FunctionLayerShareStack)

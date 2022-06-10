@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@serverless-stack/static-site-env": "file:../../../../../../static-site-env",
+    "@serverless-stack/static-site-env": "1.2.19",
     "date-fns": "^2.23.0",
     "gray-matter": "^4.0.3",
     "next": "^11.0.0",
