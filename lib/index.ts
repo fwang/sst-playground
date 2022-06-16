@@ -7,7 +7,7 @@ import ApiStack from "./api-stack";
 //import { MainStack as CronStack } from "./cron-stack";
 //import BucketStack from "./bucket-stack";
 //import BucketCDNStack from "./bucket-cdn-stack";
-//import { MainStack as TopicStack } from "./topic-stack";
+//import TopicStack from "./topic-stack";
 //import { MainStack as AppsyncStack } from "./app-sync-api-stack";
 //import { MainStack as WebsocketStack } from "./websocket-api-stack";
 //import { MainStack as KinesisStack } from "./kinesis-stream";
@@ -45,7 +45,7 @@ export default async function main(app: sst.App) {
   });
   app.setDefaultRemovalPolicy("destroy");
 
-  new ClassicStack(app, "classic");
+  //new ClassicStack(app, "classic");
 
   app
   .stack(ApiStack, { id: "api" })
@@ -62,7 +62,7 @@ export default async function main(app: sst.App) {
   //new CronStack(app, "cron");
   //.stack(BucketStack, { id: "bucket" })
   //.stack(BucketCDNStack, { id: "bucket-cdn" })
-  //new TopicStack(app, "topic");
+  //.stack(TopicStack, { id: "topic" })
   //.stack(EventBusStack, { id: "event-bus" })
   //new KinesisStack(app, "stream");
   //.stack(ReactSiteStack, { id: "site" })

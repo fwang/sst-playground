@@ -1,18 +1,18 @@
 import * as sst from "@serverless-stack/resources";
 
-export class MainStack extends sst.Stack {
-  constructor(scope: sst.App, id: string, props?: sst.StackProps) {
-    super(scope, id, props);
-
-    const topic = new sst.Topic(this, "Topic", {
-      defaultFunctionProps: {
+export default function TopicStack({ stack }: sst.StackContext) {
+  const topic = new sst.Topic(stack, "Topic", {
+    defaults: {
+      function: {
         timeout: 3,
       },
-      subscribers: ["src/lambda.main"],
-    });
+    },
+    subscribers: {
+      main: "src/lambda.main"
+    },
+  });
 
-    this.addOutputs({
-      TopicName: topic.snsTopic.topicName,
-    });
-  }
+  stack.addOutputs({
+    TopicName: topic.topicName,
+  });
 }
