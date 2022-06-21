@@ -35,7 +35,7 @@ import ApiStack from "./api-stack";
 //import { MainStack as LambdaErrorCasesStack } from "./lambda-error-cases-stack";
 //import { MainStack as CircularDependencyStack } from "./circular-dependency-stack";
 
-import ClassicStack from "./classic-stack";
+//import ClassicStack from "./classic-stack";
 
 import * as sst from "@serverless-stack/resources";
 
