@@ -1,6 +1,6 @@
 import * as sst from "@serverless-stack/resources";
 
-export function MainStack({ stack }: sst.StackContext) {
+export default function MainStack({ stack }: sst.StackContext) {
   const postgres = new sst.RDS(stack, "Rds", {
     engine: "postgresql10.14",
     defaultDatabaseName: "acme",

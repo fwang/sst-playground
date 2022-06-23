@@ -1,13 +1,13 @@
 import { RemovalPolicy } from "aws-cdk-lib";
 import * as sst from "@serverless-stack/resources";
 
-export function MainStack({ stack }: sst.StackContext) {
+export default function TableStack({ stack }: sst.StackContext) {
   const table = new sst.Table(stack, "Table", {
     fields: {
       userId: "string",
       noteId: "string",
     },
-    primaryIndex: { partitionKey: "userId2" },
+    primaryIndex: { partitionKey: "userId" },
     globalIndexes: {
       niIndex: { partitionKey: "noteId" },
       niUiIndex: { partitionKey: "noteId", sortKey: "userId" },

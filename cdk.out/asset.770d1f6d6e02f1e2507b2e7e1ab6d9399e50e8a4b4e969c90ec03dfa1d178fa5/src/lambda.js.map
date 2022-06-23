@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../src/lambda.ts"],
-  "sourcesContent": ["import { APIGatewayProxyResult } from \"aws-lambda\";\nimport * as layer from \"layer\";\n\nexport async function root(\n  event: APIGatewayProxyEvent\n): Promise<APIGatewayProxyResult> {\n  return {\n    statusCode: 200,\n    body: layer.handler(),\n  };\n}\n\nexport async function leaf(\n  event: APIGatewayProxyEvent\n): Promise<APIGatewayProxyResult> {\n  return {\n    statusCode: 200,\n    body: \"leaf\",\n  };\n}\n\nexport async function main(\n  event: APIGatewayProxyEvent\n): Promise<APIGatewayProxyResult> {\n  console.log(event.requestContext.http.path);\n  return {\n    statusCode: 200,\n    body: \"$default\",\n  };\n}\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AACA,YAAuB;AAEvB,oBACE,OACgC;AAChC,SAAO;AAAA,IACL,YAAY;AAAA,IACZ,MAAM,AAAM,cAAQ;AAAA,EACtB;AACF;AAEA,oBACE,OACgC;AAChC,SAAO;AAAA,IACL,YAAY;AAAA,IACZ,MAAM;AAAA,EACR;AACF;AAEA,oBACE,OACgC;AAChC,UAAQ,IAAI,MAAM,eAAe,KAAK,IAAI;AAC1C,SAAO;AAAA,IACL,YAAY;AAAA,IACZ,MAAM;AAAA,EACR;AACF;",
-  "names": []
-}

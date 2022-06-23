@@ -18,9 +18,9 @@ import ApiStack from "./api-stack";
 //import FunctionLayerStack from "./function-layer-stack";
 //import FunctionLayerShareStack from "./function-layer-share-stack";
 
-//import { MainStack as TableStack } from "./table-stack";
+//import TableStack from "./table-stack";
 //import GlobalTableStack from "./global-table-stack";
-//import { MainStack as RDSStack } from "./rds-stack";
+//import RDSStack from "./rds-stack";
 //import { MainStack as KinesisFirehoseStack } from "./kinesis-firehose";
 //import { MainStack as SiteStack } from "./static-site-stack";
 
@@ -56,7 +56,7 @@ export default async function main(app: sst.App) {
   //new AppsyncStack(app, "appsync");
   //new WebsocketStack(app, "websocket");
 
-  //.stack(TableStack, { id: "table" });
+  //.stack(TableStack, { id: "table" })
   //.stack(GlobalTableStack, { id: "global-table" });
   //.stack(RDSStack, { id: "rds"})
   //new CronStack(app, "cron");
