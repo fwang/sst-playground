@@ -1,13 +1,19 @@
 //import * as apig from "@aws-cdk/aws-apigatewayv2-alpha";
 import * as sst from "@serverless-stack/resources";
+import AuthStack from "./auth-stack"
 
-export default function ApiStack({ stack }: sst.StackContext) {
+export default function ApiStack({ app, stack }: sst.StackContext) {
+  const { auth } = sst.use(AuthStack);
+
   // Create Api with custom domain
   const api = new sst.Api(stack, "Api", {
-    customDomain: "api.sst.sh",
+    customDomain: app.stage === "dev" ? "api.sst.sh" : undefined,
     defaults: {
       function: {
         timeout: 10,
+        environment: {
+          USER_POOL_ID: auth.userPoolId
+        },
       },
     },
     routes: {
@@ -16,6 +22,8 @@ export default function ApiStack({ stack }: sst.StackContext) {
       $default: "src/lambda.main",
     },
   });
+
+  auth.attachPermissionsForAuthUsers(stack, [api]);
 
   stack.addOutputs({
     Endpoint: api.url || "no-url",

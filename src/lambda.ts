@@ -1,26 +1,20 @@
-import { APIGatewayProxyResult } from "aws-lambda";
+import { APIGatewayProxyHandlerV2 } from "aws-lambda";
 
-export async function root(
-  event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> {
+export const root: APIGatewayProxyHandlerV2 = async (event, context) => {
   return {
     statusCode: 200,
     body: "root",
   };
 }
 
-export async function leaf(
-  event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> {
+export const leaf: APIGatewayProxyHandlerV2 = async (event, context) => {
   return {
     statusCode: 200,
     body: "leaf",
   };
 }
 
-export async function main(
-  event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> {
+export const main: APIGatewayProxyHandlerV2 = async (event, context) => {
   //console.log(event.requestContext.http.path);
   return {
     statusCode: 200,
