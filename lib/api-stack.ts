@@ -1,6 +1,6 @@
 //import * as apig from "@aws-cdk/aws-apigatewayv2-alpha";
 import * as sst from "@serverless-stack/resources";
-import AuthStack from "./auth-stack"
+import AuthStack from "./auth-stack";
 
 export default function ApiStack({ app, stack }: sst.StackContext) {
   const { auth } = sst.use(AuthStack);

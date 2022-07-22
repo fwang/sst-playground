@@ -18,6 +18,7 @@ import AuthStack from "./auth-stack";
 //import { MainStack as ScriptStack } from "./script-stack";
 //import FunctionLayerStack from "./function-layer-stack";
 //import FunctionLayerShareStack from "./function-layer-share-stack";
+//import CodeBuildStack from "./code-build-stack";
 
 //import TableStack from "./table-stack";
 //import GlobalTableStack from "./global-table-stack";
@@ -49,8 +50,8 @@ export default async function main(app: sst.App) {
   //new ClassicStack(app, "classic");
 
   app
-  .stack(AuthStack)
-  .stack(ApiStack, { id: "api" })
+  //.stack(AuthStack)
+  //.stack(ApiStack, { id: "api" })
   //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" })
   //.stack(ApiV1Stack, { id: "apiv1" });
   //.stack(ApolloStack, { id: "apollo" });
@@ -72,6 +73,7 @@ export default async function main(app: sst.App) {
   //new ScriptStack(app, "script", { api: apiStack.api });
   //.stack(FunctionLayerStack)
   //.stack(FunctionLayerShareStack)
+  //.stack(CodeBuildStack)
 
   // Unsupported SST constructs
   //new KinesisFirehoseStack(app, "firehose");
