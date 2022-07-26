@@ -30,7 +30,7 @@ import AuthStack from "./auth-stack";
 //import TopicToQueueStack from "./topic-to-queue-stack";
 //import ContainerFunction from "./container-function-stack";
 //import { MainStack as AnotherStack } from "./api-with-lambda-authorizer";
-//import { MainStack as AnotherStack } from "./step-functions-stack";
+//import StepFunctionStack from "./step-functions-stack";
 //import RuntimeStack from "./runtime-stack";
 //import { MainStack as EmptyStack } from "./empty-stack";
 //import { MainStack as ErrorStack } from "./error-stack";
@@ -50,8 +50,8 @@ export default async function main(app: sst.App) {
   //new ClassicStack(app, "classic");
 
   app
-  //.stack(AuthStack)
-  //.stack(ApiStack, { id: "api" })
+  .stack(AuthStack)
+  .stack(ApiStack, { id: "api" })
   //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" })
   //.stack(ApiV1Stack, { id: "apiv1" });
   //.stack(ApolloStack, { id: "apollo" });
@@ -73,6 +73,7 @@ export default async function main(app: sst.App) {
   //new ScriptStack(app, "script", { api: apiStack.api });
   //.stack(FunctionLayerStack)
   //.stack(FunctionLayerShareStack)
+  //.stack(StepFunctionStack)
   //.stack(CodeBuildStack)
 
   // Unsupported SST constructs

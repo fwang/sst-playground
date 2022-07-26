@@ -14,5 +14,9 @@
     "us-east-1d",
     "us-east-1e",
     "us-east-1f"
-  ]
+  ],
+  "hosted-zone:account=112245769880:domainName=sst.sh:region=us-east-2": {
+    "Id": "/hostedzone/Z02506863RWS6YBI7QXH1",
+    "Name": "sst.sh."
+  }
 }
