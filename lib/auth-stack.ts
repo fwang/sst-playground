@@ -1,7 +1,11 @@
-import * as sst from "@serverless-stack/resources"
+import { Auth, Config, StackContext } from "@serverless-stack/resources";
 
-export default function AuthStack({ stack }: sst.StackContext) {
-  const auth = new sst.Auth(stack, "Auth")
+export default function AuthStack({ stack }: StackContext) {
+  const auth = new Auth(stack, "Auth")
 
-  return { auth }
+  const USER_POOL_ID = new Config.Parameter(stack, "USER_POOL_ID", {
+    value: auth.userPoolId,
+  })
+
+  return { auth, USER_POOL_ID }
 }

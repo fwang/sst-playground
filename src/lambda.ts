@@ -1,23 +1,12 @@
 import { APIGatewayProxyHandlerV2 } from "aws-lambda";
-
-export const root: APIGatewayProxyHandlerV2 = async (event, context) => {
-  return {
-    statusCode: 200,
-    body: "root",
-  };
-}
-
-export const leaf: APIGatewayProxyHandlerV2 = async (event, context) => {
-  return {
-    statusCode: 200,
-    body: "leaf",
-  };
-}
+import { Config } from "@serverless-stack/node/config";
 
 export const main: APIGatewayProxyHandlerV2 = async (event, context) => {
-  //console.log(event.requestContext.http.path);
+  console.log(Config);
+
+
   return {
     statusCode: 200,
-    body: "$default",
+    body: "hello",
   };
 }

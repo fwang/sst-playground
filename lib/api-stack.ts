@@ -1,25 +1,26 @@
-//import * as apig from "@aws-cdk/aws-apigatewayv2-alpha";
 import * as sst from "@serverless-stack/resources";
 import AuthStack from "./auth-stack";
+import SecretsStack from "./secrets-stack";
 
 export default function ApiStack({ app, stack }: sst.StackContext) {
-  const { auth } = sst.use(AuthStack);
+  const { auth, USER_POOL_ID } = sst.use(AuthStack);
+  const { STRIPE_KEY, TWILIO_KEY, TEST_KEY } = sst.use(SecretsStack);
 
   // Create Api with custom domain
   const api = new sst.Api(stack, "Api", {
     customDomain: app.stage === "dev" ? "api.sst.sh" : undefined,
     defaults: {
       function: {
-        timeout: 10,
-        environment: {
-          USER_POOL_ID: auth.userPoolId
-        },
+        config: [
+          STRIPE_KEY,
+          TWILIO_KEY,
+          TEST_KEY,
+          USER_POOL_ID,
+        ],
       },
     },
     routes: {
-      "GET /": "src/lambda.root",
-      "GET /leaf": "src/lambda.leaf",
-      $default: "src/lambda.main",
+      "GET /": "src/lambda.main",
     },
   });
 
@@ -29,6 +30,9 @@ export default function ApiStack({ app, stack }: sst.StackContext) {
     Endpoint: api.url || "no-url",
     CustomEndpoint: api.customDomainUrl || "no-custom-url",
   });
+
+  return { api };
+}
 
   /*
   // Create Api without custom domain
@@ -55,6 +59,3 @@ export default function ApiStack({ app, stack }: sst.StackContext) {
     autoDeploy: true,
   });
   */
-
-  return { api };
-}

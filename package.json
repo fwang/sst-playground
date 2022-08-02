@@ -17,6 +17,7 @@
     "@aws-cdk/aws-kinesisfirehose-destinations-alpha": "2.32.0-alpha.0",
     "@serverless-stack/cli": "1.6.1",
     "@serverless-stack/resources": "1.6.1",
+    "@serverless-stack/node": "1.6.1",
     "apollo-server-lambda": "^2.25.2"
   },
   "license": "ISC",

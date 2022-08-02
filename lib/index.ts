@@ -1,6 +1,7 @@
 import * as cdk from "aws-cdk-lib";
 import ApiStack from "./api-stack";
 import AuthStack from "./auth-stack";
+import SecretsStack from "./secrets-stack";
 //import { MainStack as ApiExtraRoutesStack } from "./api-extra-routes-stack";
 //import EventBusStack from "./eventbus-stack";
 //import ApolloStack from "./apollo-api-stack";
@@ -44,14 +45,19 @@ import * as sst from "@serverless-stack/resources";
 export default async function main(app: sst.App) {
   app.setDefaultFunctionProps({
     runtime: "nodejs16.x",
+    bundle: {
+      format: "esm",
+    }
   });
   app.setDefaultRemovalPolicy("destroy");
 
   //new ClassicStack(app, "classic");
 
   app
+  .stack(SecretsStack)
   .stack(AuthStack)
   .stack(ApiStack, { id: "api" })
+
   //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" })
   //.stack(ApiV1Stack, { id: "apiv1" });
   //.stack(ApolloStack, { id: "apollo" });
