@@ -9,23 +9,24 @@ import SecretsStack from "./secrets-stack";
 //import BucketStack from "./bucket-stack";
 //import BucketCDNStack from "./bucket-cdn-stack";
 //import TopicStack from "./topic-stack";
-//import { MainStack as AppsyncStack } from "./app-sync-api-stack";
+//import AppSyncApiStack from "./app-sync-api-stack";
 //import { MainStack as WebsocketStack } from "./websocket-api-stack";
 //import { MainStack as KinesisStack } from "./kinesis-stream";
 //import { MainStack as ApiV1Stack } from "./apiv1-stack";
-//import ReactSiteStack from "./react-static-site-stack";
-//import NextjsStack from "./nextjs-site-stack";
-//import RemixStack from "./remix-site-stack";
 //import { MainStack as ScriptStack } from "./script-stack";
 //import FunctionLayerStack from "./function-layer-stack";
 //import FunctionLayerShareStack from "./function-layer-share-stack";
 //import CodeBuildStack from "./code-build-stack";
 
+//import { MainStack as SiteStack } from "./static-site-stack";
+//import ReactSiteStack from "./react-static-site-stack";
+//import NextjsStack from "./nextjs-site-stack";
+//import RemixStack from "./remix-site-stack";
+
 //import TableStack from "./table-stack";
 //import GlobalTableStack from "./global-table-stack";
 //import RDSStack from "./rds-stack";
 //import { MainStack as KinesisFirehoseStack } from "./kinesis-firehose";
-//import { MainStack as SiteStack } from "./static-site-stack";
 
 //import { MainStack as AnotherStack } from "./table-to-kinesis-stack";
 //import TopicToQueueStack from "./topic-to-queue-stack";
@@ -61,7 +62,7 @@ export default async function main(app: sst.App) {
   //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" })
   //.stack(ApiV1Stack, { id: "apiv1" });
   //.stack(ApolloStack, { id: "apollo" });
-  //new AppsyncStack(app, "appsync");
+  //.stack(AppSyncApiStack, { id: "appsync" });
   //new WebsocketStack(app, "websocket");
 
   //.stack(TableStack, { id: "table" })
