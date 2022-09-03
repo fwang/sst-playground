@@ -25,7 +25,15 @@ export default function TableStack({ stack }: sst.StackContext) {
     },
     stream: true,
     consumers: {
-      consumerA: "src/lambda.main",
+      consumerA: {
+        function: "src/lambda.main",
+        filters: [{
+          awsRegion: ["us-east-1"],
+"dynamodb": {
+  "StreamViewType": ["NEW_AND_OLD_IMAGES"],
+}
+        }]
+      },
     },
   });
 
