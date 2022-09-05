@@ -2,7 +2,7 @@ import * as cdk from "aws-cdk-lib";
 import * as cf from "aws-cdk-lib/aws-cloudfront";
 import * as cfOrigins from "aws-cdk-lib/aws-cloudfront-origins";
 import * as sst from "@serverless-stack/resources";
-import { MainStack as ApiStack } from "./api-stack";
+import ApiStack from "./api-stack";
 
 export default function ReactSiteStack({ stack }: sst.StackContext) {
   const { api } = sst.use(ApiStack);
@@ -12,6 +12,7 @@ export default function ReactSiteStack({ stack }: sst.StackContext) {
   // React
   const site = new sst.ReactStaticSite(stack, "Frontend", {
     path: "src/sites/react-app",
+    customDomain: "react.sst.sh",
     environment: {
       REACT_APP_API_URL: api.url,
     },

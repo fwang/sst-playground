@@ -4,7 +4,7 @@ import SecretsStack from "./secrets-stack";
 
 export default function ApiStack({ app, stack }: sst.StackContext) {
   const { auth, USER_POOL_ID } = sst.use(CognitoStack);
-  const { STRIPE_KEY, TWILIO_KEY, TEST_KEY } = sst.use(SecretsStack);
+  const { STRIPE_KEY, TWILIO_KEY } = sst.use(SecretsStack);
 
   // Create Api with custom domain
   const api = new sst.Api(stack, "Api", {
@@ -14,7 +14,6 @@ export default function ApiStack({ app, stack }: sst.StackContext) {
         config: [
           STRIPE_KEY,
           TWILIO_KEY,
-          TEST_KEY,
           USER_POOL_ID,
         ],
       },
