@@ -1,6 +1,6 @@
 import * as cdk from "aws-cdk-lib";
 import ApiStack from "./api-stack";
-import AuthStack from "./auth-stack";
+import CognitoStack from "./cognito-stack";
 import SecretsStack from "./secrets-stack";
 //import { MainStack as ApiExtraRoutesStack } from "./api-extra-routes-stack";
 //import EventBusStack from "./eventbus-stack";
@@ -54,9 +54,9 @@ export default async function main(app: sst.App) {
   //new ClassicStack(app, "classic");
 
   app
-  .stack(SecretsStack)
-  .stack(AuthStack)
-  .stack(ApiStack, { id: "api" })
+    .stack(SecretsStack)
+    .stack(CognitoStack, { id: "AuthStack" })
+    .stack(ApiStack, { id: "api" })
 
   //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" })
   //.stack(ApiV1Stack, { id: "apiv1" });
@@ -85,7 +85,7 @@ export default async function main(app: sst.App) {
   // Unsupported SST constructs
   //new KinesisFirehoseStack(app, "firehose");
 
-  //.stack(RuntimeStack, { id: "runtime"})
+  //.stack(RuntimeStack, { id: "runtime" })
   //.stack(TopicToQueueStack)
   //.stack(ContainerFunctionStack)
   //new EmptyStack(app, "empty");

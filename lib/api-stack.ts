@@ -1,9 +1,9 @@
 import * as sst from "@serverless-stack/resources";
-import AuthStack from "./auth-stack";
+import CognitoStack from "./cognito-stack";
 import SecretsStack from "./secrets-stack";
 
 export default function ApiStack({ app, stack }: sst.StackContext) {
-  const { auth, USER_POOL_ID } = sst.use(AuthStack);
+  const { auth, USER_POOL_ID } = sst.use(CognitoStack);
   const { STRIPE_KEY, TWILIO_KEY, TEST_KEY } = sst.use(SecretsStack);
 
   // Create Api with custom domain
@@ -21,6 +21,7 @@ export default function ApiStack({ app, stack }: sst.StackContext) {
     },
     routes: {
       "GET /": "src/lambda.main",
+      "GET /route0": "src/lambda.main",
     },
   });
 
@@ -34,28 +35,28 @@ export default function ApiStack({ app, stack }: sst.StackContext) {
   return { api };
 }
 
-  /*
-  // Create Api without custom domain
-  new sst.Api(stack, "NoDomain", {
-    routes: {
-      "GET /": "src/lambda.main",
-    },
-  });
+/*
+// Create Api without custom domain
+new sst.Api(stack, "NoDomain", {
+  routes: {
+    "GET /": "src/lambda.main",
+  },
+});
 
-  // Create Api with custom stages
-  const customStageApi = new sst.Api(stack, "CustomStage", {
-    cdk: {
-      httpApi: {
-        createDefaultStage: false,
-      },
+// Create Api with custom stages
+const customStageApi = new sst.Api(stack, "CustomStage", {
+  cdk: {
+    httpApi: {
+      createDefaultStage: false,
     },
-    routes: {
-      "GET /": "src/lambda.main",
-    },
-  });
-  new apig.HttpStage(stack, "Stage", {
-    httpApi: customStageApi.cdk.httpApi,
-    stageName: "my-stage",
-    autoDeploy: true,
-  });
-  */
+  },
+  routes: {
+    "GET /": "src/lambda.main",
+  },
+});
+new apig.HttpStage(stack, "Stage", {
+  httpApi: customStageApi.cdk.httpApi,
+  stageName: "my-stage",
+  autoDeploy: true,
+});
+*/

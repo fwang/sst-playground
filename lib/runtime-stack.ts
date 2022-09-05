@@ -10,13 +10,27 @@ export default function MainStack({ stack }: sst.StackContext) {
           handler: "CsharpFunction::CsharpFunction.Handlers::Handler",
         }
       },
-      "GET /csharp6": {
+      //"GET /csharp6": {
+      //  function: {
+      //    runtime: "dotnet6",
+      //    srcPath: "src/csharp6",
+      //    handler: "CsharpFunction::CsharpFunction.Handlers::Handler",
+      //  }
+      //},
+      "GET /go": {
         function: {
-          runtime: "dotnet6",
-          srcPath: "src/csharp6",
-          handler: "CsharpFunction::CsharpFunction.Handlers::Handler",
+          runtime: "go1.x",
+          srcPath: "src/go",
+          handler: "src",
         }
       },
+      //"GET /python": {
+      //  function: {
+      //    runtime: "python3.8",
+      //    srcPath: "src/python",
+      //    handler: "handler.main",
+      //  }
+      //},
     },
   });
 
