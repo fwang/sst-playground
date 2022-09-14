@@ -23,9 +23,10 @@ import SecretsStack from "./secrets-stack";
 //import NextjsStack from "./nextjs-site-stack";
 //import RemixStack from "./remix-site-stack";
 
-import TableStack from "./table-stack";
+import JobStack from "./job-stack";
+//import TableStack from "./table-stack";
 //import GlobalTableStack from "./global-table-stack";
-//import RDSStack from "./rds-stack";
+import RDSStack from "./rds-stack";
 //import { MainStack as KinesisFirehoseStack } from "./kinesis-firehose";
 
 //import { MainStack as AnotherStack } from "./table-to-kinesis-stack";
@@ -56,8 +57,9 @@ export default async function main(app: sst.App) {
 
   app
     .stack(SecretsStack)
-    .stack(CognitoStack, { id: "AuthStack" })
-    .stack(ApiStack, { id: "api" })
+    //.stack(CognitoStack, { id: "AuthStack" })
+    //.stack(ApiStack, { id: "api" })
+    .stack(JobStack, { id: "long-running" })
 
   //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" })
   //.stack(ApiV1Stack, { id: "apiv1" });
@@ -67,7 +69,7 @@ export default async function main(app: sst.App) {
 
   //.stack(TableStack, { id: "table" })
   //.stack(GlobalTableStack, { id: "global-table" });
-  //.stack(RDSStack, { id: "rds"})
+  //.stack(RDSStack, { id: "rds" })
   //new CronStack(app, "cron");
   //.stack(BucketStack, { id: "bucket" })
   //.stack(BucketCDNStack, { id: "bucket-cdn" })

@@ -66,15 +66,15 @@
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-appsync-alpha/-/aws-appsync-alpha-2.32.0-alpha.0.tgz#7c3a5a8d5073d5ee3c84074e47e91180de81cd84"
   integrity sha512-ued6lAwL0zF4tqLeMJ1UPbRPDHdZbB+nPHF79bXiaJnYnW5x/bw/MBMySZrIljNidFWn8I+WSgEL717+fPsRbQ==
 
-"@aws-cdk/aws-kinesisfirehose-alpha@2.32.0-alpha.0":
-  version "2.32.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-kinesisfirehose-alpha/-/aws-kinesisfirehose-alpha-2.32.0-alpha.0.tgz#f53517e58c30497d5955164b41ed800a7aac7568"
-  integrity sha512-ECMKBu8FRK1ip9wVlOEHL9VTGyO4UqPWAJ16F5KWpK5cDyRVMgf3q2MBezSwQH2IjRexiZG4OEwu6ytzcu0UgQ==
+"@aws-cdk/aws-kinesisfirehose-alpha@2.39.1-alpha.0":
+  version "2.39.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-kinesisfirehose-alpha/-/aws-kinesisfirehose-alpha-2.39.1-alpha.0.tgz#a9f888278b1d88e2ea9026556da23c2ade348246"
+  integrity sha512-hwBdX7rszUw91ZVO6tsK/kMrHsYwBqVQCVGxi020wqTZbeinyjLYbcFl8pL+nawF7muGYM34y7iuw0+HqN4iSQ==
 
-"@aws-cdk/aws-kinesisfirehose-destinations-alpha@2.32.0-alpha.0":
-  version "2.32.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-kinesisfirehose-destinations-alpha/-/aws-kinesisfirehose-destinations-alpha-2.32.0-alpha.0.tgz#a9c9aa423f5bf5e3e792f18a9d752eac9b53428a"
-  integrity sha512-oTtCjyPie3o1TRsNOsuojUWW4MjRE3x05POlzEA71/1rKmUWpH8vpZ3x3C/Xdo0vJCvMkGm5QwVqpKSjVfZvJw==
+"@aws-cdk/aws-kinesisfirehose-destinations-alpha@2.39.1-alpha.0":
+  version "2.39.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-kinesisfirehose-destinations-alpha/-/aws-kinesisfirehose-destinations-alpha-2.39.1-alpha.0.tgz#a0be80386cd83acb68e94b4762e390df71c1f601"
+  integrity sha512-JaxU02QnbVfUoFUtydNCkZZqDT+Tt7jZTDXZrKbjKvB29x/hEON8KsTto7AvCC4GDyQRTmQetlcG+nja3diopA==
 
 "@aws-crypto/ie11-detection@^2.0.0":
   version "2.0.0"
