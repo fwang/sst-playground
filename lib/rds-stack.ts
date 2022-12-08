@@ -24,4 +24,6 @@ export default function MainStack({ stack }: sst.StackContext) {
     //Mysql56SecretArn: mysql56.secretArn,
     //Mysql57SecretArn: mysql57.secretArn,
   });
+
+  return { postgres };
 }

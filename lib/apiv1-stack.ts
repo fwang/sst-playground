@@ -1,15 +1,15 @@
 import * as apig from "aws-cdk-lib/aws-apigateway";
-import * as sst from "@serverless-stack/resources";
+import { StackContext, ApiGatewayV1Api, Function } from "@serverless-stack/resources";
 
-export function MainStack({ stack }: sst.StackContext ) {
+export default function ApiV1Stack({ app, stack }: StackContext) {
   ////////////////////////
   // Creating a new API
   ////////////////////////
-  const authorizerFn = new sst.Function(stack, "MyAuthorizerFunction", {
+  const authorizerFn = new Function(stack, "MyAuthorizerFunction", {
     handler: "src/authorizer.main",
   });
 
-  const api = new sst.ApiGatewayV1Api(stack, "LegacyApi", {
+  const api = new ApiGatewayV1Api(stack, "LegacyApi", {
     cors: true,
     accessLog: true,
     customDomain: "v1.sst.sh",
@@ -48,6 +48,8 @@ export function MainStack({ stack }: sst.StackContext ) {
       "WWW-Authenticate": "'Basic realm=\"Secure Area\"'",
     },
   });
+
+  return { api };
 
   ////////////////////////
   // Importing an existing API

@@ -5,7 +5,7 @@ export default function RemixStack({ stack }: sst.StackContext) {
   const { api } = sst.use(ApiStack);
 
   const edge = new sst.RemixSite(stack, "web", {
-    path: "src/sites/remix",
+    path: "sites/remix",
     edge: true,
     environment: {
       API_URL: api.url,
@@ -14,7 +14,7 @@ export default function RemixStack({ stack }: sst.StackContext) {
   });
 
   const regional = new sst.RemixSite(stack, "regional", {
-    path: "src/sites/remix",
+    path: "sites/remix",
     environment: {
       API_URL: api.url,
     },
@@ -31,4 +31,6 @@ export default function RemixStack({ stack }: sst.StackContext) {
     REGIONAL_SITE_DistributionId: regional.distributionId,
     REGIONAL_SITE_DistributionDomain: regional.distributionDomain,
   });
+
+  return { edge, regional };
 }

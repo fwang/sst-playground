@@ -17,4 +17,6 @@ export default function AppSyncApiStack({ stack }: sst.StackContext) {
     ApiKey: api.cdk.graphqlApi.apiKey!,
     CustomDomain: api.customDomainUrl!,
   });
+
+  return { api };
 }

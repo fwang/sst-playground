@@ -9,4 +9,6 @@ export default function ApolloStack({ stack }: sst.StackContext) {
     Endpoint: api.url || "no-url",
     CustomEndpoint: api.customDomainUrl || "no-custom-url",
   });
+
+  return { api };
 }

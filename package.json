@@ -3,6 +3,7 @@
   "private": true,
   "description": "tests",
   "version": "1.0.15",
+  "type": "module",
   "scripts": {
     "add-cdk": "sst add-cdk",
     "diff": "sst diff",
@@ -16,10 +17,15 @@
   "dependencies": {
     "@aws-cdk/aws-kinesisfirehose-alpha": "2.39.1-alpha.0",
     "@aws-cdk/aws-kinesisfirehose-destinations-alpha": "2.39.1-alpha.0",
-    "@serverless-stack/cli": "1.14.3",
-    "@serverless-stack/resources": "1.14.3",
-    "@serverless-stack/node": "1.14.3",
-    "apollo-server-lambda": "^2.25.2"
+    "@aws-sdk/client-dynamodb": "^3.204.0",
+    "@aws-sdk/client-s3": "^3.198.0",
+    "@aws-sdk/client-ses": "^3.198.0",
+    "@aws-sdk/util-dynamodb": "^3.204.0",
+    "@serverless-stack/node": "^1.18.2",
+    "apollo-server-lambda": "^2.25.2",
+    "aws-cdk-lib": "2.50.0",
+    "constructs": "10.1.156",
+    "sst": "^0.0.0-20221124204929"
   },
   "license": "ISC",
   "devDependencies": {

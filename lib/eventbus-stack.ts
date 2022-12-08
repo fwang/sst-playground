@@ -89,4 +89,6 @@ export default function EventBusStack({ stack }: sst.StackContext) {
     },
     BusName: bus.eventBusName,
   });
+
+  return { bus };
 }

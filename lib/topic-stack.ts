@@ -15,4 +15,6 @@ export default function TopicStack({ stack }: sst.StackContext) {
   stack.addOutputs({
     TopicName: topic.topicName,
   });
+
+  return { topic };
 }
