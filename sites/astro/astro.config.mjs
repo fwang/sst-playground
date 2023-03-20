@@ -1,5 +1,5 @@
-import { defineConfig } from 'astro/config';
-import aws from '@astrojs/aws/lambda';
+import { defineConfig } from "astro/config";
+import aws from "astro-sst/lambda";
 
 export default defineConfig({
   output: "server",

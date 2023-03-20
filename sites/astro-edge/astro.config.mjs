@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import aws from '@astrojs/aws/edge';
+import aws from 'astro-sst/edge';
 
 // https://astro.build/config
 export default defineConfig({

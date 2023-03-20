@@ -1,7 +1,7 @@
-import { Config } from "@serverless-stack/node/config";
-import { JobHandler } from "@serverless-stack/node/job";
+import { Config } from "sst/node/config";
+import { JobHandler } from "sst/node/job";
 
-declare module "@serverless-stack/node/job" {
+declare module "sst/node/job" {
   export interface JobTypes {
     LongJob: {
       foo: string;

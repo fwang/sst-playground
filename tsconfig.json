@@ -20,5 +20,5 @@
     "strictPropertyInitialization": false,
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["lib", "node_modules/websocket-api-stack.ts"]
+  "include": ["stacks", ".sst/types"]
 }

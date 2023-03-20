@@ -1,0 +1,8 @@
+{
+  "context": {
+    "@aws-cdk/core:permissionsBoundary": {
+      "name": "developer-policy"
+    },
+    "@aws-cdk/core:bootstrapQualifier": "MYQUALIFIER"
+  }
+}

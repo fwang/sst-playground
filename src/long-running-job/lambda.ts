@@ -1,5 +1,5 @@
-import { Job } from "@serverless-stack/node/job";
-import { Config } from "@serverless-stack/node/config";
+import { Job } from "sst/node/job";
+import { Config } from "sst/node/config";
 
 export const main = async () => {
   console.log("all i'm doing is running this Job")

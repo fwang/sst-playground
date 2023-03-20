@@ -7,7 +7,7 @@
   "scripts": {
     "add-cdk": "sst add-cdk",
     "diff": "sst diff",
-    "start": "sst start",
+    "dev": "sst dev",
     "build": "sst build",
     "deploy": "sst deploy",
     "remove": "sst remove",
@@ -15,6 +15,7 @@
     "test": "sst load-config --stage dev -- node a.js"
   },
   "dependencies": {
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.39.1-alpha.0",
     "@aws-cdk/aws-kinesisfirehose-alpha": "2.39.1-alpha.0",
     "@aws-cdk/aws-kinesisfirehose-destinations-alpha": "2.39.1-alpha.0",
     "@aws-sdk/client-dynamodb": "^3.204.0",
@@ -22,10 +23,10 @@
     "@aws-sdk/client-ses": "^3.198.0",
     "@aws-sdk/util-dynamodb": "^3.204.0",
     "@serverless-stack/node": "^1.18.2",
-    "apollo-server-lambda": "^2.25.2",
-    "aws-cdk-lib": "2.50.0",
-    "constructs": "10.1.156",
-    "sst": "^0.0.0-20221124204929"
+    "apollo-server-lambda": "^3.11.1",
+    "aws-cdk-lib": "2.62.2",
+    "constructs": "10.1.270",
+    "sst": "^0.0.0-20230308001253"
   },
   "license": "ISC",
   "devDependencies": {

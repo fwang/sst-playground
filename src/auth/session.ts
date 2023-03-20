@@ -1,6 +1,7 @@
-import { Table } from "@serverless-stack/node/table";
-import { useResponse, ApiHandler } from "@serverless-stack/node/api";
-import { useSession } from "@serverless-stack/node/auth";
+import { Table } from "sst/node/table";
+//import { useResponse, ApiHandler } from "sst/node/api";
+import { ApiHandler } from "sst/node/api";
+import { useSession } from "sst/node/auth";
 import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 
@@ -23,5 +24,6 @@ export const handler = ApiHandler(async () => {
     })
   );
 
-  useResponse().json(unmarshall(data.Item!));
+  //useResponse().json(unmarshall(data.Item!));
+  return {};
 });

@@ -11,9 +11,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/aws": "^1.0.0",
     "@astrojs/node": "^3.0.0",
     "astro": "^1.6.8",
-    "sst": "^1.17.1"
+    "astro-sst": "^2.1.9",
+    "sst": "^0.0.0-20230223225422"
   }
 }

@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import blue from '../images/blue.png';
+import { Config } from "sst/node/config";
+import { Function } from "sst/node/function";
 
+// Fetch
 const ret = await fetch("https://postman-echo.com/get", {
 	headers: {
 		"foo": "bar",
@@ -10,12 +13,25 @@ const ret = await fetch("https://postman-echo.com/get", {
 });
 const json = await ret.json();
 
+// Environment variables
+const processEnv = {};
+Object.entries(process.env)
+	.filter(([key, _]) => key.startsWith("SST_") || key === "FUNCTION_NAME")
+	.forEach(([key, value]) => { processEnv[key] = value; });
+
 ---
 
 <Layout title="Welcome to Astro.">
+	<h1>Test images</h1>
 	<img src={blue} />
 	<img src="/images/yellow.png" />
+	<h1>Test fetch in SSR</h1>
 	<pre>{JSON.stringify(json, null, 4)}</pre>
+	<h1>Test process.env in SSR</h1>
+	<pre>{JSON.stringify(processEnv, null, 4)}</pre>
+	<h1>Test sst/node in SSR</h1>
+	<pre>function.name: {Function.AstroRegionalDummyFunction.functionName}</pre>
+	<pre>secret.value: {Config.AstroRegionalDummySecret}</pre>
 	<main>
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<p class="instructions">
