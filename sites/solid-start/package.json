@@ -1,7 +1,8 @@
 {
   "name": "solid-start",
   "scripts": {
-    "dev": "solid-start dev",
+    "dev": "sst bind solid-start dev",
+    "astro:dev": "SST_APP=playground SST_STAGE=dev solid-start dev",
     "build": "solid-start build",
     "start": "solid-start start"
   },
@@ -17,7 +18,7 @@
     "solid-js": "^1.6.0",
     "solid-start": "^0.2.0",
     "solid-start-sst": "2.0.1",
-    "sst": "^2.1.17",
+    "sst": "^0.0.0-20230321194732",
     "undici": "^5.11.0"
   },
   "engines": {

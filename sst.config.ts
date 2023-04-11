@@ -25,14 +25,20 @@ import FunctionStack from "./stacks/function-stack";
 //
 import StaticSiteStack from "./stacks/static-site-stack";
 import ReactSiteStack from "./stacks/react-static-site-stack";
+import ReactSiteLocalStack from "./stacks/react-static-site-local-stack";
 import Nextjs11Stack from "./stacks/nextjs11-site-stack";
 import Nextjs13Stack from "./stacks/nextjs13-site-stack";
+import Nextjs13EdgeStack from "./stacks/nextjs13-site-edge-stack";
+import Nextjs13VercelModeStack from "./stacks/nextjs13-site-vercel-mode-stack";
+import Nextjs13LocalStack from "./stacks/nextjs13-site-local-stack";
 import RemixStack from "./stacks/remix-site-stack";
 import RemixEdgeStack from "./stacks/remix-edge-site-stack";
 import AstroStack from "./stacks/astro-site-stack";
 import AstroEdgeStack from "./stacks/astro-site-edge-stack";
+import AstroLocalStack from "./stacks/astro-site-local-stack";
 import SolidStartStack from "./stacks/solid-start-site-stack";
 import SolidStartEdgeStack from "./stacks/solid-start-site-edge-stack";
+import SolidStartLocalStack from "./stacks/solid-start-site-local-stack";
 //
 import JobStack from "./stacks/job-stack";
 //import TableStack from "./stacks/table-stack";
@@ -87,7 +93,7 @@ export default {
       //
       //.stack(DemoStack, { id: "demo" });
       //.stack(AuthStack, { id: "auth" })
-      //.stack(SecretsStack)
+      .stack(SecretsStack)
       //.stack(CognitoStack, { id: "AuthStack" })
       //.stack(ApiStack, { id: "api" })
       //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" });
@@ -109,13 +115,19 @@ export default {
       //.stack(EventBusStack, { id: "event-bus" });
       //.stack(KinesisStack, { id: "stream" })
       //.stack(StaticSiteStack);
-      //.stack(ReactSiteStack, { id: "site" })
+      //.stack(ReactSiteStack, { id: "site" });
+      //.stack(ReactSiteLocalStack);
       //.stack(Nextjs11Stack);
       .stack(Nextjs13Stack);
+    //.stack(Nextjs13EdgeStack);
+    //.stack(Nextjs13VercelModeStack)
+    //.stack(Nextjs13LocalStack);
     //.stack(RemixStack);
     //.stack(RemixEdgeStack);
+    //.stack(AstroLocalStack);
     //.stack(AstroStack);
-    //.stack(AstroEdgeStack)
+    //.stack(AstroEdgeStack);
+    //.stack(SolidStartLocalStack);
     //.stack(SolidStartStack)
     //.stack(SolidStartEdgeStack);
     //.stack(ScriptStack, { id: "script" });

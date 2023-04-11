@@ -12,7 +12,7 @@
     "deploy": "sst deploy",
     "remove": "sst remove",
     "cdk": "sst cdk",
-    "test": "sst load-config --stage dev -- node a.js"
+    "test": "sst bind vitest run"
   },
   "dependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "2.39.1-alpha.0",
@@ -26,7 +26,8 @@
     "apollo-server-lambda": "^3.11.1",
     "aws-cdk-lib": "2.62.2",
     "constructs": "10.1.270",
-    "sst": "^0.0.0-20230308001253"
+    "sst": "^0.0.0-20230324002412",
+    "vitest": "^0.29.7"
   },
   "license": "ISC",
   "devDependencies": {

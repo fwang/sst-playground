@@ -1,4 +1,4 @@
-import { AstroSite, Config, Function, StackContext } from "sst/constructs";
+import { use, AstroSite, Config, Function, StackContext } from "sst/constructs";
 
 export default function AstroStack({ stack }: StackContext) {
   const f = new Function(stack, "AstroRegionalDummyFunction", {
@@ -8,9 +8,9 @@ export default function AstroStack({ stack }: StackContext) {
 
   const site = new AstroSite(stack, "regional", {
     path: "sites/astro",
-    //dev: {
-    //  deploy: true,
-    //},
+    dev: {
+      deploy: true,
+    },
     bind: [f, s],
     environment: {
       FUNCTION_NAME: f.functionName,
