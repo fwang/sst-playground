@@ -30,8 +30,8 @@ Object.entries(process.env)
 	<h1>Test process.env in SSR</h1>
 	<pre>{JSON.stringify(processEnv, null, 4)}</pre>
 	<h1>Test sst/node in SSR</h1>
-	<pre>function.name: {Function.AstroLocalDummyFunction.functionName}</pre>
-	<pre>secret.value: {Config.AstroLocalDummySecret}</pre>
+	<pre>function.name: {Function.ConfigFunction.functionName}</pre>
+	<pre>secret.value: {Config.STRIPE_KEY}</pre>
 	<main>
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<p class="instructions">

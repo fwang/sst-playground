@@ -62,7 +62,7 @@ export default function StaticSiteStack({ stack }: StackContext) {
 
   stack.addOutputs({
     URL: site.url,
-    CustomDomainURL: site.customDomainUrl || "no-custom-domain",
+    CustomDomainURL: site.customDomainUrl,
   });
 }
 

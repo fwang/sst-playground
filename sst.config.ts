@@ -8,9 +8,9 @@ import SecretsStack from "./stacks/secrets-stack";
 import ApiExtraRoutesStack from "./stacks/api-extra-routes-stack";
 import EventBusStack from "./stacks/eventbus-stack";
 //import ApolloStack from "./stacks/apollo-api-stack";
-////import { MainStack as CronStack } from "./stacks/cron-stack";
+//import { MainStack as CronStack } from "./stacks/cron-stack";
 //import BucketStack from "./stacks/bucket-stack";
-////import BucketCDNStack from "./stacks/bucket-cdn-stack";
+//import BucketCDNStack from "./stacks/bucket-cdn-stack";
 //import TopicStack from "./stacks/topic-stack";
 //import QueueStack from "./stacks/queue-stack";
 import AppSyncApiStack from "./stacks/app-sync-api-stack";
@@ -19,10 +19,9 @@ import WebsocketStack from "./stacks/websocket-api-stack";
 import ApiV1Stack from "./stacks/apiv1-stack";
 import ScriptStack from "./stacks/script-stack";
 import FunctionStack from "./stacks/function-stack";
-////import FunctionLayerStack from "./stacks/function-layer-stack";
-////import FunctionLayerShareStack from "./stacks/function-layer-share-stack";
-////import CodeBuildStack from "./stacks/code-build-stack";
-//
+//import FunctionLayerStack from "./stacks/function-layer-stack";
+//import FunctionLayerShareStack from "./stacks/function-layer-share-stack";
+//import CodeBuildStack from "./stacks/code-build-stack";
 import StaticSiteStack from "./stacks/static-site-stack";
 import ReactSiteStack from "./stacks/react-static-site-stack";
 import ReactSiteLocalStack from "./stacks/react-static-site-local-stack";
@@ -39,18 +38,20 @@ import AstroLocalStack from "./stacks/astro-site-local-stack";
 import SolidStartStack from "./stacks/solid-start-site-stack";
 import SolidStartEdgeStack from "./stacks/solid-start-site-edge-stack";
 import SolidStartLocalStack from "./stacks/solid-start-site-local-stack";
-//
+import SvelteKitStack from "./stacks/svelte-kit-site-stack";
+import SvelteKitEdgeStack from "./stacks/svelte-kit-site-edge-stack";
+import SvelteKitLocalStack from "./stacks/svelte-kit-site-local-stack";
 import JobStack from "./stacks/job-stack";
 //import TableStack from "./stacks/table-stack";
-////import GlobalTableStack from "./stacks/global-table-stack";
+import GlobalTableStack from "./stacks/global-table-stack";
 //import RDSStack from "./stacks/rds-stack";
-////import { MainStack as KinesisFirehoseStack } from "./stacks/kinesis-firehose";
-//
-////import { MainStack as AnotherStack } from "./stacks/table-to-kinesis-stack";
-////import TopicToQueueStack from "./stacks/topic-to-queue-stack";
-////import ContainerFunction from "./stacks/container-function-stack";
-////import { MainStack as AnotherStack } from "./stacks/api-with-lambda-authorizer";
-////import StepFunctionStack from "./stacks/step-functions-stack";
+//import { MainStack as KinesisFirehoseStack } from "./stacks/kinesis-firehose";
+
+//import { MainStack as AnotherStack } from "./stacks/table-to-kinesis-stack";
+//import TopicToQueueStack from "./stacks/topic-to-queue-stack";
+//import ContainerFunction from "./stacks/container-function-stack";
+//import { MainStack as AnotherStack } from "./stacks/api-with-lambda-authorizer";
+//import StepFunctionStack from "./stacks/step-functions-stack";
 //import RuntimeStack from "./stacks/runtime-stack";
 //import { MainStack as EmptyStack } from "./stacks/empty-stack";
 //import { MainStack as ErrorStack } from "./stacks/error-stack";
@@ -94,34 +95,15 @@ export default {
       //.stack(DemoStack, { id: "demo" });
       //.stack(AuthStack, { id: "auth" })
       .stack(SecretsStack)
-      //.stack(CognitoStack, { id: "AuthStack" })
-      //.stack(ApiStack, { id: "api" })
-      //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" });
-      //.stack(JobStack, { id: "long-running" });
 
-      //.stack(ApiV1Stack, { id: "apiv1" })
-      //.stack(ApolloStack, { id: "apollo" })
-      //.stack(AppSyncApiStack, { id: "appsync" });
-      //.stack(WebsocketStack, { id: "websocket" });
-
-      //.stack(TableStack, { id: "table" })
-      //.stack(GlobalTableStack, { id: "global-table" });
-      //.stack(RDSStack, { id: "rds" })
-      //new CronStack(app, "cron");
-      //.stack(BucketStack, { id: "bucket" })
-      //.stack(BucketCDNStack, { id: "bucket-cdn" })
-      //.stack(TopicStack, { id: "topic" })
-      //.stack(QueueStack)
-      //.stack(EventBusStack, { id: "event-bus" });
-      //.stack(KinesisStack, { id: "stream" })
-      //.stack(StaticSiteStack);
-      //.stack(ReactSiteStack, { id: "site" });
-      //.stack(ReactSiteLocalStack);
       //.stack(Nextjs11Stack);
       .stack(Nextjs13Stack);
     //.stack(Nextjs13EdgeStack);
     //.stack(Nextjs13VercelModeStack)
     //.stack(Nextjs13LocalStack);
+    //.stack(SvelteKitStack);
+    //.stack(SvelteKitEdgeStack);
+    //.stack(SvelteKitLocalStack);
     //.stack(RemixStack);
     //.stack(RemixEdgeStack);
     //.stack(AstroLocalStack);
@@ -130,10 +112,33 @@ export default {
     //.stack(SolidStartLocalStack);
     //.stack(SolidStartStack)
     //.stack(SolidStartEdgeStack);
+    //.stack(StaticSiteStack);
+    //.stack(ReactSiteStack, { id: "site" });
+    //.stack(ReactSiteLocalStack);
+
+    //.stack(ApiStack, { id: "api" })
+    //.stack(ApiExtraRoutesStack, { id: "api-extra-routes" });
+    //.stack(ApiV1Stack, { id: "apiv1" });
+    //.stack(ApolloStack, { id: "apollo" })
+    //.stack(AppSyncApiStack, { id: "appsync" });
+    //.stack(WebsocketStack, { id: "websocket" });
+
+    //.stack(CognitoStack, { id: "AuthStack" })
+    //.stack(TableStack, { id: "table" })
+    //.stack(GlobalTableStack, { id: "global-table" });
+    //.stack(RDSStack, { id: "rds" })
+    //new CronStack(app, "cron");
+    //.stack(BucketStack, { id: "bucket" })
+    //.stack(BucketCDNStack, { id: "bucket-cdn" })
+    //.stack(TopicStack, { id: "topic" })
+    //.stack(QueueStack)
+    //.stack(EventBusStack, { id: "event-bus" });
+    //.stack(KinesisStack, { id: "stream" })
     //.stack(ScriptStack, { id: "script" });
     //.stack(FunctionLayerStack)
     //.stack(FunctionLayerShareStack)
     //.stack(StepFunctionStack)
+    //.stack(JobStack, { id: "long-running" });
     //.stack(CodeBuildStack)
 
     // Unsupported SST constructs

@@ -1,0 +1,1 @@
+export default ["about.html","index.html","sverdle/how-to-play.html","tests/ssg.html","tests.html","tests/ssg/__data.json"]

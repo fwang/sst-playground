@@ -26,7 +26,7 @@ export default function Nextjs13LocalStack({ app, stack }: StackContext) {
   });
 
   stack.addOutputs({
-    SiteURL: site.url,
+    site: site.url,
   });
 
   return { site };

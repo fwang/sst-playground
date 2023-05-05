@@ -4,7 +4,10 @@ import { GraphqlApi } from "aws-cdk-lib/aws-appsync";
 export default function AppSyncApiStack({ stack }: StackContext) {
   const api = new AppSyncApi(stack, "AppSyncApi", {
     schema: "src/appsync/schema.graphql",
-    customDomain: "appsync.sst.sh",
+    customDomain: {
+      domainName: "appsync.sst.sh",
+      recordType: "A_AAAA",
+    },
     dataSources: {
       mainDS: "src/appsync/lambda.main",
     },

@@ -24,9 +24,8 @@
     "@aws-sdk/util-dynamodb": "^3.204.0",
     "@serverless-stack/node": "^1.18.2",
     "apollo-server-lambda": "^3.11.1",
-    "aws-cdk-lib": "2.62.2",
+    "aws-cdk-lib": "2.72.1",
     "constructs": "10.1.270",
-    "sst": "^0.0.0-20230324002412",
     "vitest": "^0.29.7"
   },
   "license": "ISC",

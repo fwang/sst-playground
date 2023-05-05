@@ -9,9 +9,8 @@ export default function Nextjs13Stack({ app, stack }: StackContext) {
   const site = new NextjsSite(stack, "regional", {
     path: "sites/nextjs13",
     //buildCommand: "echo hi",
-    //buildCommand: "pnpm open-next build",
-    //buildCommand: "npx open-next@0.0.0-20230201225157 build",
-    //buildCommand: "OPEN_NEXT_DEBUG=true pnpm open-next-local:build",
+    buildCommand: "pnpm open-next-local:build",
+    //buildCommand: "npx open-next@1.0.0 build",
     customDomain: {
       domainName: "next.sst.sh",
       domainAlias: "www.next.sst.sh",

@@ -8,6 +8,11 @@ export default function DemoStack({ app, stack }: StackContext) {
     url: true,
   });
 
+  new Function(stack, "demoFunction2", {
+    handler: "src/demo/lambda.main",
+    bind: [f, new Config.Secret(stack, "demoSTRIPE2")],
+  });
+
   stack.addOutputs({
     myFunction: f.functionName,
   });

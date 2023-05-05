@@ -1,17 +1,14 @@
-import { use, AstroSite, Config, Function, StackContext } from "sst/constructs";
+import { use, AstroSite, StackContext } from "sst/constructs";
 import SecretsStack from "./secrets-stack";
 
-export default function AstroEdgeStack({ stack }: StackContext) {
-  const { STRIPE_KEY } = use(SecretsStack);
-  const f = new Function(stack, "AstroEdgeDummyFunction", {
-    handler: "src/lambda.main",
-  });
-  const s = new Config.Secret(stack, "AstroEdgeDummySecret");
+export default function AstroEdgeStack({ app, stack }: StackContext) {
+  if (app.mode === "dev") throw new Error("Do not `sst dev` live sites.");
 
+  const { f, STRIPE_KEY } = use(SecretsStack);
   const site = new AstroSite(stack, "web", {
     path: "sites/astro-edge",
     edge: true,
-    bind: [f, s, STRIPE_KEY],
+    bind: [f, STRIPE_KEY],
     environment: {
       FUNCTION_NAME: f.functionName,
     },
