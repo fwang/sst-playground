@@ -14,7 +14,8 @@ export default function DemoStack({ app, stack }: StackContext) {
   });
 
   stack.addOutputs({
-    myFunction: f.functionName,
+    f1Name: f.functionName,
+    f1Url: f.url,
   });
 
   return { f };

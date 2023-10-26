@@ -5,10 +5,10 @@ import { Bucket } from "sst/node/bucket";
 import { Function } from "sst/node/function";
 
 export const main: APIGatewayProxyHandlerV2 = async (event, context) => {
-  console.log("node/Config", Config);
-  console.log("node/Bucket", Bucket);
-  console.log("node/Function", Function);
   console.log({ event });
+  //console.log("node/Config", Config);
+  //console.log("node/Bucket", Bucket);
+  //console.log("node/Function", Function);
   // console.log("Config.APP (default)", Config.APP);
   // console.log("Config.STAGE (default)", Config.STAGE);
   // console.log("Config.STRIPE_KEY (secret)", Config.STRIPE_KEY);

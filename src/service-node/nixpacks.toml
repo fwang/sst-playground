@@ -1,0 +1,3 @@
+providers = ["node"]
+[start]
+cmd = "node app.mjs"

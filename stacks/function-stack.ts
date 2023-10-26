@@ -1,18 +1,23 @@
 import { use, StackContext, Api, Table, Function } from "sst/constructs";
 
 export default function FunctionStack({ app, stack }: StackContext) {
-  const worker = new Function(stack, "worker", {
-    handler: "src/test-warming/worker.main",
-    runtime: "nodejs16.x",
+  const nodeFn = new Function(stack, "nodeFunction", {
+    runtime: "nodejs18.x",
+    handler: "src/lambda.main",
+    //nodejs: {
+    //  install: ["uuid"],
+    //},
+    url: true,
   });
 
-  const warmer = new Function(stack, "warmer", {
-    handler: "src/test-warming/warmer.main",
-    bind: [worker],
+  const pythonFn = new Function(stack, "pythonFunction", {
+    runtime: "python3.9",
+    handler: "src/lambda-python/handler.handler",
+    url: true,
   });
 
   stack.addOutputs({
-    workerName: worker.functionName,
-    warmerName: warmer.functionName,
-  })
+    nodeUrl: nodeFn.url,
+    pythonUrl: pythonFn.url,
+  });
 }

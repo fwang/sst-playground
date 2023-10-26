@@ -2,28 +2,32 @@ import { RestApi } from "aws-cdk-lib/aws-apigateway";
 import { StackContext, ApiGatewayV1Api, Function } from "sst/constructs";
 
 export default function ApiV1Stack({ app, stack }: StackContext) {
-  //const authorizerFn = new Function(stack, "MyAuthorizerFunction", {
-  //  handler: "src/authorizer.main",
-  //});
-
   const api = new ApiGatewayV1Api(stack, "LegacyApi", {
     cors: true,
     accessLog: true,
     //customDomain: "v1.sst.sh",
-    //authorizers: {
-    //  MyAuthorizer: {
-    //    type: "lambda_request",
-    //    function: authorizerFn,
-    //    identitySources: [apig.IdentitySource.header("Authorization")],
-    //  },
-    //},
+    authorizers: {
+      //MyAuthorizer: {
+      //  type: "lambda_request",
+      //  function: new Function(stack, "MyAuthorizerFunction", {
+      //    handler: "src/authorizer.main",
+      //  }),
+      //  identitySources: [apig.IdentitySource.header("Authorization")],
+      //},
+      MyAuthorizer: {
+        type: "lambda_token",
+        function: new Function(stack, "MyAuthorizerFunction", {
+          handler: "src/authorizer.main",
+        }),
+      },
+    },
     defaults: {
       function: {
         environment: {
           TABLE_NAME: "dummy",
         },
       },
-      //authorizer: "MyAuthorizer",
+      authorizer: "MyAuthorizer",
     },
     routes: {
       "GET /": "src/lambda.main",
@@ -54,6 +58,10 @@ export default function ApiV1Stack({ app, stack }: StackContext) {
   //    "WWW-Authenticate": "'Basic realm=\"Secure Area\"'",
   //  },
   //});
+
+  stack.addOutputs({
+    ApiV1URL: api.url,
+  });
 
   return { api };
 }

@@ -114,5 +114,41 @@
         ]
       }
     ]
+  },
+  "hosted-zone:account=112245769880:domainName=sst.sh:region=eu-central-1": {
+    "Id": "/hostedzone/Z02506863RWS6YBI7QXH1",
+    "Name": "sst.sh."
+  },
+  "vpc-provider:account=232771856781:filter.vpc-id=vpc-0efd416647a9a4b41:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0efd416647a9a4b41",
+    "vpcCidrBlock": "10.192.0.0/16",
+    "ownerAccountId": "232771856781",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-08a0eeb3164688721",
+            "cidr": "10.192.10.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-021ae33d33957acb9"
+          }
+        ]
+      },
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-02bc3979ec85631b6",
+            "cidr": "10.192.20.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-03a304273cd946004"
+          }
+        ]
+      }
+    ]
   }
 }

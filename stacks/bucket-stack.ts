@@ -1,21 +1,13 @@
-import * as sst from "@serverless-stack/resources";
+import { StackContext, Bucket, Function } from "sst/constructs";
 
-export default function BucketStack({ stack }: sst.StackContext) {
-  const bucket = new sst.Bucket(stack, "Bucket", {
+export default function BucketStack({ stack }: StackContext) {
+  const bucket = new Bucket(stack, "Bucket", {
     notifications: {
       myNotification: {
         events: ["object_created"],
         function: "src/lambda.main",
       },
-    }
-  });
-
-  new sst.Function(stack, "Seed500Files", {
-    handler: "src/seed-bucket.main",
-    environment: {
-      BUCKET_NAME: bucket.bucketName,
     },
-    use: [bucket],
   });
 
   stack.addOutputs({

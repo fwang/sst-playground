@@ -1,5 +1,4 @@
 import { AppSyncApi, StackContext } from "sst/constructs";
-import { GraphqlApi } from "aws-cdk-lib/aws-appsync";
 
 export default function AppSyncApiStack({ stack }: StackContext) {
   const api = new AppSyncApi(stack, "AppSyncApi", {
@@ -13,14 +12,6 @@ export default function AppSyncApiStack({ stack }: StackContext) {
     },
     resolvers: {
       "Query license": "mainDS",
-    },
-  });
-
-  new AppSyncApi(stack, "AppSyncApi2", {
-    cdk: {
-      graphqlApi: GraphqlApi.fromGraphqlApiAttributes(stack, "IApi", {
-        graphqlApiId: api.apiId,
-      }),
     },
   });
 

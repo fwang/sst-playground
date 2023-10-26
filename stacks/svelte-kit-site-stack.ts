@@ -5,6 +5,7 @@ export default function SvelteKitStack({ app, stack }: StackContext) {
   if (app.mode === "dev") throw new Error("Do not `sst dev` live sites.");
 
   const { f, STRIPE_KEY } = use(SecretsStack);
+
   const site = new SvelteKitSite(stack, "regional", {
     path: "sites/svelte",
     bind: [f, STRIPE_KEY],

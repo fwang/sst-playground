@@ -9,18 +9,15 @@ export default function ApiStack({ app, stack }: StackContext) {
   const secret = new Config.Secret(stack, "my-secret");
   const bucket = new Bucket(stack, "my-files");
 
-  // Create Api with custom domain
   const api = new Api(stack, "Api", {
-    //customDomain: app.stage === "dev" ? "api.sst.sh" : undefined,
+    customDomain: app.stage === "dev" ? "api.sst.sh" : undefined,
     defaults: {
       function: {
         bind: [secret, bucket],
-        enableLiveDev: false,
       },
     },
     routes: {
-      "GET /": "src/lambda.main",
-      "GET /route0": "src/lambda.main",
+      "GET /": "src/lambda-api/handler.handler",
       "POST /EventBridge-PutEvents": {
         type: "aws",
         cdk: {
@@ -37,7 +34,7 @@ export default function ApiStack({ app, stack }: StackContext) {
     },
   });
 
-  app.addDefaultFunctionBinding([api]);
+  api.bind([api]);
 
   stack.addOutputs({
     Endpoint: api.url || "no-url",

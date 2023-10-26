@@ -1,0 +1,8 @@
+ARG NODE_VERSION
+FROM public.ecr.aws/lambda/nodejs:${NODE_VERSION}
+COPY package.json ${LAMBDA_TASK_ROOT}
+RUN npm install
+
+COPY handler.js ${LAMBDA_TASK_ROOT}
+
+CMD ["handler.handler"]

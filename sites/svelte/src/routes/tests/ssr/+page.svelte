@@ -34,4 +34,9 @@
 		<td>Config.STRIPE_KEY</td>
 		<td>{data.bind.stripeKey}</td>
 	</tr>
+	<tr>
+		<td>server side cookies</td>
+		<td>flavour - price</td>
+		<td>{data.cookies.flavour} - {data.cookies.price}</td>
+	</tr>
 </table>

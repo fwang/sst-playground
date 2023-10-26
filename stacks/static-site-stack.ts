@@ -5,25 +5,15 @@ import { StackContext, StaticSite } from "sst/constructs";
 export default function StaticSiteStack({ stack }: StackContext) {
   // React
   const site = new StaticSite(stack, "SPA", {
-    cdk: {
-      distribution: {
-        defaultBehavior: {
-          functionAssociations: undefined,
-        },
-      },
-    },
-    fileOptions: [
-      {
-        exclude: "*",
-        include: "*.html",
-        cacheControl: "max-age=0,no-cache,no-store,must-revalidate",
-      },
-      {
-        exclude: "*",
-        include: ["*.js", "*.css"],
-        cacheControl: "max-age=31536000,public,immutable",
-      },
-    ],
+    //assets: {
+    //  fileOptions: [
+    //    {
+    //      files: ".well-known/site-association-json",
+    //      cacheControl: "max-age=0,no-cache,no-store,must-revalidate",
+    //      contentType: "application/json",
+    //    },
+    //  ],
+    //},
     replaceValues: [
       {
         files: "**/*.js",
@@ -44,6 +34,21 @@ export default function StaticSiteStack({ stack }: StackContext) {
     },
     */
 
+    /* Plain HTML
+    path: "sites/website",
+    indexPage: "index.html",
+    errorPage: "error.html",
+     */
+
+    /* Vite
+     */
+    path: "sites/vite",
+    buildOutput: "dist",
+    buildCommand: "npm run build",
+    environment: {
+      VITE_APP_API_URL: "https://api.sst.sh",
+    },
+
     /* Jekyll
     path: "src/sites/jekyll-site",
     indexPage: "index.html",
@@ -52,12 +57,6 @@ export default function StaticSiteStack({ stack }: StackContext) {
     buildOutput: "_site",
     customDomain: "www.sst.sh",
     */
-
-    /* Plain HTML
-     */
-    path: "sites/website",
-    indexPage: "index.html",
-    errorPage: "error.html",
   });
 
   stack.addOutputs({
